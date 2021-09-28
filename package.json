@@ -10,12 +10,15 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@mdi/font": "^6.1.95",
         "@popperjs/core": "^2.10.1",
         "axios": "^0.21",
         "bootstrap": "^5.1.1",
         "jquery": "^3.6",
+        "jquery-ui": "^1.12.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "node-sass": "^6.0.1",
         "popper.js": "^1.16.1",
         "postcss": "^8.1.14",
         "resolve-url-loader": "^4.0.0",
