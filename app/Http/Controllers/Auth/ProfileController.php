@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use File;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Storage;
 
 class ProfileController
 {
@@ -25,17 +25,17 @@ class ProfileController
         $imageName = $user->id.'_'.time().'.'.$request->type;
         $deleteFiles = [];
 
-        foreach (Storage::files('public/images/users/') as $file) {
+        foreach (File::files('images/users/') as $file) {
             $filename = pathinfo($file, PATHINFO_BASENAME);
             $id = strstr($filename, '_', true);
 
             if (intval($id) == $user->id)
-                $deleteFiles[] = 'public/images/users/'.$filename;
+                $deleteFiles[] = 'images/users/'.$filename;
         }
 
-        Storage::put('public/images/users/'.$imageName, $image);
-        Storage::delete($deleteFiles);
+        File::put('images/users/'.$imageName, $image);
+        File::delete($deleteFiles);
 
-        User::where('id', $user->id)->update(['image' => 'storage/images/users/'.$imageName]);
+        User::where('id', $user->id)->update(['image' => 'images/users/'.$imageName]);
     }
 }
