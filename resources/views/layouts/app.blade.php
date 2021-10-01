@@ -5,6 +5,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -17,10 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body, #app {
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand navbar-light bg-light shadow">
+    <div id="app" class="d-flex flex-column">
+        <nav class="navbar navbar-expand navbar-light bg-light shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -79,9 +85,15 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 flex-shrink-0">
             @yield('content')
         </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container text-center">
+                <span class="text-muted">© 25.09.2021 - {{ date('d.m.Y', time()) }}</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

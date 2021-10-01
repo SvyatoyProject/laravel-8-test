@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-lg">
         <div id="toolbar">
-            <button id="remove" class="btn btn-danger mb-3"
+            <button id="remove" class="btn btn-danger mb-3 text-light"
                     disabled {{ !auth()->user() || auth()->user()->rights > 1 ? 'hidden' : '' }}>
                 Удалить
             </button>
@@ -31,7 +31,7 @@
                 <tbody id="table_body"></tbody>
             </table>
 
-            <button id="add" class="btn btn-success" data-bs-toggle="modal"
+            <button id="add" class="btn btn-success text-light" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" {{ !auth()->user() || auth()->user()->rights > 2 ? 'hidden' : '' }}>
                 Добавить
             </button>
@@ -65,7 +65,7 @@
                                     <button type="button" class="btn btn-secondary" id="modal_close"
                                             data-bs-dismiss="modal">Закрыть
                                     </button>
-                                    <button class="btn btn-primary" type="submit" id="btn_save" value="1">Сохранить
+                                    <button class="btn btn-primary text-light" type="submit" id="btn_save" value="1">Сохранить
                                     </button>
                                 </div>
                             </form>
