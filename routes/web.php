@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware('auth')->name('profile');
+
+
+Route::get('/get-users', [App\Http\Controllers\Api\TableController::class, 'GetTableData'])->middleware('auth')->name('users');
+
+Route::post('/add-user', [App\Http\Controllers\Api\TableController::class, 'AddTableData'])->middleware('auth')->name('addUser');
+Route::post('/update-user', [App\Http\Controllers\Api\TableController::class, 'UpdateTableData'])->middleware('auth')->name('updateUser');
+Route::post('/delete-user', [App\Http\Controllers\Api\TableController::class, 'DeleteTableData'])->middleware('auth')->name('deleteUser');
